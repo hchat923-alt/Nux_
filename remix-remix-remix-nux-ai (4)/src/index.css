@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  :root {
+    --font-arabic: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    
+    /* Warm, comfortable morning light theme canvas */
+    --bg-main: #FAF8F5;
+    --card-bg: #FFFFFF;
+    --card-border: #E8E2D5;
+    --text-primary: #22211E;
+    --text-secondary: #6E695F;
+  }
+
+  .dark {
+    /* Warm, comfortable night theme canvas */
+    --bg-main: #181715;
+    --card-bg: #22211E;
+    --card-border: #32302B;
+    --text-primary: #EDEAE4;
+    --text-secondary: #9C988F;
+  }
+
+  html, body, #root {
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-arabic);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Elegant monospace code font styling */
+  code, pre, kbd, samp {
+    font-family: var(--font-mono);
+    font-feature-settings: "liga" 1, "calt" 1;
+    font-variant-ligatures: contextual;
+    letter-spacing: -0.012em;
+  }
+}
+
+.font-greeting {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* Smooth Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Ensure markdown and message text never overflow container boundaries */
+.markdown-body {
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.markdown-body p, 
+.markdown-body span, 
+.markdown-body li, 
+.markdown-body div {
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* Chat Viewport strict boundary */
+.chat-viewport {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  overscroll-behavior-x: none;
+}
+
+/* Hide scrollbar utility for clean tab bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+/* Global modern sleek scrollbars - eliminates ugly OS grey arrows and tracks */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(160, 155, 145, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(160, 155, 145, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Code Block Custom Dark Scrollbar (seamless & invisible unless hovering) */
+.code-block-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 148, 158, 0.25) transparent;
+}
+
+.code-block-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.code-block-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.code-block-scroll::-webkit-scrollbar-thumb {
+  background: rgba(139, 148, 158, 0.25);
+  border-radius: 9999px;
+}
+
+.code-block-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 148, 158, 0.5);
+}
+
+.code-block-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ============================================================
+   GitHub Dark Syntax Highlighting Theme for Code Blocks
+   ============================================================ */
+
+/* Comments / Documentation */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #8B949E !important;
+  font-style: italic;
+}
+
+/* Punctuation & Brackets */
+.token.punctuation {
+  color: #C9D1D9 !important;
+}
+
+/* Constants, Numbers, Booleans */
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #79C0FF !important;
+}
+
+/* Tags & Properties */
+.token.property,
+.token.tag,
+.token.deleted {
+  color: #7EE787 !important;
+}
+
+/* Strings, Characters, Attributes */
+.token.string,
+.token.char,
+.token.inserted {
+  color: #7EE787 !important;
+}
+
+.token.selector,
+.token.attr-name,
+.token.builtin {
+  color: #79C0FF !important;
+}
+
+/* Operators, Entities, URLs */
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #FF7B72 !important;
+}
+
+/* Keywords, Controls, Storage types */
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #FF7B72 !important;
+  font-weight: 500;
+}
+
+/* Functions & Class names */
+.token.function,
+.token.class-name {
+  color: #D2A8FF !important;
+}
+
+/* Variables & Regex */
+.token.regex,
+.token.important,
+.token.variable {
+  color: #FFA657 !important;
+}
+
+/* ============================================================
+   Math Display Equations Card Container Fallback
+   ============================================================ */
+.katex, .katex * {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+.katex .accent {
+  text-align: center !important;
+}
+
+.katex .accent > .vlist-t {
+  text-align: center !important;
+}
+
+.katex-display {
+  margin: 1.5rem auto !important;
+  max-width: 42rem !important;
+  padding: 1.5rem 1.75rem !important;
+  min-height: 95px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  direction: ltr !important;
+  position: relative !important;
+  background-color: #FDFCF7 !important;
+  border: 1px solid #E2DDD0 !important;
+  border-radius: 0.85rem !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+  overflow-x: auto !important;
+  text-align: center !important;
+}
+
+.katex-display > .katex {
+  display: inline-block !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+.dark .katex-display {
+  background-color: #1E1D1A !important;
+  border-color: #383630 !important;
+}
